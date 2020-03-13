@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <h:form id="form">    
+            
+            <center>
+                <p:panel id="basic" header="Neurona entrenada" footer="Perceptron simple" style="margin-bottom:20px;max-width:300px">
+                    <h3>X1</h3>
+                    <p:inputNumber value="#{perceptronBean.x1}"  />
+
+                    <h3>X2</h3>
+                    <p:inputNumber value="#{perceptronBean.x2}"  />
+                    
+                    <h3>X3</h3>
+                    <p:inputNumber rendered="#{!perceptronBean.simple}" value="#{perceptronBean.x3}"  />
+
+                    <h3>X4</h3>
+                    <p:inputNumber rendered="#{!perceptronBean.simple}" value="#{perceptronBean.x4}"  />
+                    
+
+                    <h3>Salida</h3>
+                    <p:inputNumber disabled="true" value="#{perceptronBean.salida}" />
+                    <br/>
+                    <br/>
+                    <p:commandButton rendered="#{perceptronBean.entrenar}" value="Calcular" action="#{perceptronBean.calcular()}" update=":form" />
+                    
+                </p:panel>
+
+            </center>
+        </h:form>
+    </h:body>
+</html>
