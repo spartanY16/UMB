@@ -8,68 +8,21 @@
 
     <h:body>
         
-        <h:form id="form">    
+        <h:form id="form">   
             
             <center>
                 
-                <p:panel id="basic" header="Entradas" footer="Perceptron simple" style="margin-bottom:20px;max-width:300px">
+                <p:panel id="basic" header="Inicio" footer="Selección de programa a ejecutar" style="margin-bottom:20px;max-width:300px">
                     
-                    <h3>Theta</h3>
-                    <p:inputNumber value="#{perceptronBean.theta}" minValue="0.00" maxValue="1.00" />
+                    <h3>Perceptron Simple</h3>
+                    <p:commandButton value="Iniciar" action="perceptron.xhtml" />
 
-                    <h3>Factor de aprendizaje</h3>
-                    <p:inputNumber value="#{perceptronBean.aprendizaje}" minValue="0.00" maxValue="1.00" />
+                    <h3>Producto Interno Bruto</h3>
+                    <p:commandButton value="Iniciar" action="producto_interno_bruto.xhtml" />
+                    
+                    <br/><br/>
 
-                    <h3>Entradas</h3>
-                    <p:selectOneMenu value="#{perceptronBean.numDeEntradas}" style="width:125px">
-                        <f:selectItem itemLabel="2" itemValue="2" />
-                        <f:selectItem itemLabel="4" itemValue="4" />
-                        <f:facet name="footer">
-                            <p:separator />
-                            <h:outputText value="3 consoles" style="font-weight:bold;"/>
-                        </f:facet>
-                    </p:selectOneMenu>
-                    
-                    <br/>
-                    <br/>
-                    
-                    <p:commandButton value="Siguiente" action="#{perceptronBean.generarWi()}" update=":form" />
                 </p:panel>
-                
-                <p:panel rendered="#{perceptronBean.entrenar}" header="Wn" style="margin-bottom:20px;max-width:300px">
-                
-                    <p:column rendered="#{perceptronBean.simple}" headerText="Wi">
-                            <p:inputNumber value="#{perceptronBean.w1}" minValue="0.00" maxValue="1.00"/>
-                            <br></br>
-                            <p:inputNumber value="#{perceptronBean.w2}" minValue="0.00" maxValue="1.00"/>
-                            <br></br>
-                    </p:column>
-                
-                    <p:column rendered="#{!perceptronBean.simple}" headerText="Wi">
-                            <p:inputNumber value="#{perceptronBean.w1}" minValue="0.00" maxValue="1.00"/>
-                            <br></br>
-                            <p:inputNumber value="#{perceptronBean.w2}" minValue="0.00" maxValue="1.00"/>
-                            <br></br>
-                            <p:inputNumber value="#{perceptronBean.w3}" minValue="0.00" maxValue="1.00"/>
-                            <br></br>
-                            <p:inputNumber value="#{perceptronBean.w4}" minValue="0.00" maxValue="1.00"/>
-                    </p:column>
-                    
-                </p:panel>
-                    
-                <p:selectOneMenu rendered="#{perceptronBean.simple}" value="#{perceptronBean.tabla}" style="width:125px">
-                    <f:selectItem itemLabel="AND" itemValue="AND" />
-                    <f:selectItem itemLabel="OR" itemValue="OR" />
-                    <f:facet name="footer">
-                        <p:separator />
-                        <h:outputText value="3 consoles" style="font-weight:bold;"/>
-                    </f:facet>
-                </p:selectOneMenu>
-                
-                <br/>
-                <br/>
-                
-                <p:commandButton rendered="#{perceptronBean.entrenar}" value="Entrenar" action="#{perceptronBean.ejecutarEntrenamiento()}" />
                 
             </center>
             

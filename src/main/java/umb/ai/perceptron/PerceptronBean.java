@@ -49,8 +49,19 @@ public class PerceptronBean implements Serializable {
         return sigPag;
     }
 
+    public String entrenarPib() {
+        System.out.println("se está entrenando...");
+        this.perceptron = new Perceptron();
+        String sigPag = null;
+
+//        sigPag = this.perceptron.entrenarPib(w1, w2, w3, w4, theta, aprendizaje, tabla);
+        sigPag = this.perceptron.entrenarPib(0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
+
+        return sigPag;
+    }
+
     public void calcular() {
-   
+
         if (simple) {
             this.salida = this.perceptron.verResultadoDe(this.x1, this.x2);
         } else {
@@ -60,10 +71,10 @@ public class PerceptronBean implements Serializable {
     }
 
     public void generarWi() {
-        
+
         this.simple = numDeEntradas == 2;
         this.entrenar = true;
-        
+
     }
 
     public double getTheta() {

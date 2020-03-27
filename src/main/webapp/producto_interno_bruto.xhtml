@@ -1,0 +1,174 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    </h:head>
+
+    <h:body>
+
+        <h:form id="form">   
+
+            <center>
+
+                <p:panel id="basic" header="Producto Interno Bruto - Colombia" footer="Datos para entrenamiento de neurona" style="margin-bottom:20px;max-width:800px">
+
+                    <p:dataTable var="pib" value="#{productoInternoBruto}">
+
+                        <p:column headerText="Año">
+                            <h:outputText value="#{pib.anios[0]}" /><br/>
+                            <h:outputText value="#{pib.anios[1]}" /><br/>
+                            <h:outputText value="#{pib.anios[2]}" /><br/>
+                            <h:outputText value="#{pib.anios[3]}" /><br/>
+                            <h:outputText value="#{pib.anios[4]}" /><br/>
+                            <h:outputText value="#{pib.anios[5]}" /><br/>
+                            <h:outputText value="#{pib.anios[6]}" /><br/>
+                            <h:outputText value="#{pib.anios[7]}" /><br/>
+                            <h:outputText value="#{pib.anios[8]}" /><br/>
+                            <h:outputText value="#{pib.anios[9]}" /><br/>
+                            <h:outputText value="#{pib.anios[10]}" /><br/>
+                            <h:outputText value="#{pib.anios[11]}" /><br/>
+                            <h:outputText value="#{pib.anios[12]}" /><br/>
+                            <h:outputText value="#{pib.anios[13]}" /><br/>
+                            <h:outputText value="#{pib.anios[14]}" /><br/>
+                            <h:outputText value="#{pib.anios[15]}" />
+                        </p:column>
+                        
+                        <p:column headerText="Consumo final">
+                            <h:outputText value="#{pib.consumoFinal[0]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[1]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[2]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[3]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[4]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[5]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[6]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[7]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[8]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[9]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[10]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[11]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[12]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[13]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[14]}" /><br/>
+                            <h:outputText value="#{pib.consumoFinal[15]}" />
+                        </p:column>
+                        
+                        <p:column headerText="Formación bruta de capital">
+                            <h:outputText value="#{pib.formacionBruta[0]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[1]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[2]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[3]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[4]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[5]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[6]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[7]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[8]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[9]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[10]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[11]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[12]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[13]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[14]}" /><br/>
+                            <h:outputText value="#{pib.formacionBruta[15]}" />
+                        </p:column>
+                        
+                        <p:column headerText="Exportaciones">
+                            <h:outputText value="#{pib.exportaciones[0]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[1]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[2]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[3]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[4]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[5]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[6]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[7]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[8]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[9]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[10]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[11]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[12]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[13]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[14]}" /><br/>
+                            <h:outputText value="#{pib.exportaciones[15]}" />
+                        </p:column>
+                        
+                        <p:column headerText="Importaciones">
+                            <h:outputText value="#{pib.importaciones[0]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[1]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[2]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[3]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[4]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[5]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[6]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[7]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[8]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[9]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[10]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[11]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[12]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[13]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[14]}" /><br/>
+                            <h:outputText value="#{pib.importaciones[15]}" />
+                        </p:column>
+                        
+                        
+                        <p:column headerText="PIB">
+                            <h:outputText value="#{pib.pib[0]}" /><br/>
+                            <h:outputText value="#{pib.pib[1]}" /><br/>
+                            <h:outputText value="#{pib.pib[2]}" /><br/>
+                            <h:outputText value="#{pib.pib[3]}" /><br/>
+                            <h:outputText value="#{pib.pib[4]}" /><br/>
+                            <h:outputText value="#{pib.pib[5]}" /><br/>
+                            <h:outputText value="#{pib.pib[6]}" /><br/>
+                            <h:outputText value="#{pib.pib[7]}" /><br/>
+                            <h:outputText value="#{pib.pib[8]}" /><br/>
+                            <h:outputText value="#{pib.pib[9]}" /><br/>
+                            <h:outputText value="#{pib.pib[10]}" /><br/>
+                            <h:outputText value="#{pib.pib[11]}" /><br/>
+                            <h:outputText value="#{pib.pib[12]}" /><br/>
+                            <h:outputText value="#{pib.pib[13]}" /><br/>
+                            <h:outputText value="#{pib.pib[14]}" /><br/>
+                            <h:outputText value="#{pib.pib[15]}" />
+                        </p:column>
+                        
+                    </p:dataTable>
+                    
+                    <br/>
+                    
+<!--                    <p:panel id="basic" header="Entradas" footer="Datos de entrenamiento" style="margin-bottom:20px;max-width:300px">
+
+                        <h3>Theta</h3>
+                        <p:inputNumber value="#{perceptronBean.theta}" minValue="0.00" maxValue="1.00" />
+
+                        <h3>Factor de aprendizaje</h3>
+                        <p:inputNumber value="#{perceptronBean.aprendizaje}" minValue="0.00" maxValue="1.00" />
+                        
+                    </p:panel>
+                    
+                    <p:panel header="Wn" style="margin-bottom:20px;max-width:300px">
+
+                        <p:column headerText="Wi">
+                                <p:inputNumber value="#{perceptronBean.w1}" minValue="0.00" maxValue="1.00"/>
+                                <br></br>
+                                <p:inputNumber value="#{perceptronBean.w2}" minValue="0.00" maxValue="1.00"/>
+                                <br></br>
+                                <p:inputNumber value="#{perceptronBean.w3}" minValue="0.00" maxValue="1.00"/>
+                                <br></br>
+                                <p:inputNumber value="#{perceptronBean.w4}" minValue="0.00" maxValue="1.00"/>
+                        </p:column>
+
+                    </p:panel>-->
+
+                    <br/>
+                    
+                    <p:commandButton value="Entrenar" action="#{perceptronBean.entrenarPib()}" />
+
+                </p:panel>
+
+            </center>
+
+        </h:form>
+
+    </h:body>
+
+</html>
