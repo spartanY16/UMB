@@ -57,6 +57,13 @@ public class Neurona {
         }
 
     }
+    
+    public double verResultadoDePib(double x1, double x2, double x3, double x4) {
+        double res = funcionDePropagacion(x1, x2, x3, x4);
+        
+        return res;
+
+    }
 
     public void funcionDeReaprendizaje(int yE, int yR, int x1, int x2) {
 

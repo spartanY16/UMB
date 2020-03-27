@@ -225,39 +225,29 @@ public class Perceptron {
                 break;
             }
 
-            if (exitos == 16) {
+            if (exitos == 15) {
                 System.out.println("Exito completo con " + n);
                 retorno = "pib_entrenado.xhtml";
                 break;
             }
 
             yR = n.funcionDePropagacion(x1[indice], x2[indice], x3[indice], x4[indice]);
+            
+            double comparadorInferior = yR - 50000;
+            double comparadorSuperior = yR + 50000;
 
-            if (yR >= 0) {// 1
 
-                if (1 == yf[indice]) {
-                    exitos++;
-                    indice = nextIndice(indice);
-                    continue;
+            if (yf[indice] >= comparadorInferior && yf[indice] <= comparadorSuperior) {
+                exitos++;
+                indice = nextIndice(indice);
+                continue;
 
-                } else {
-                    n.funcionDeReaprendizaje(yf[indice], 1, x1[indice], x2[indice], x3[indice], x4[indice]);
-                    exitos = 0;
-                    iteracionR++;
-                }
-
-            } else {// 0
-
-                if (0 == yf[indice]) {
-                    exitos++;
-                    indice = nextIndice(indice);
-                    continue;
-                } else {
-                    n.funcionDeReaprendizaje(yf[indice], 0, x1[indice], x2[indice], x3[indice], x4[indice]);
-                    exitos = 0;
-                    iteracionR++;
-                }
+            } else {
+                n.funcionDeReaprendizaje(yf[indice], 1, x1[indice], x2[indice], x3[indice], x4[indice]);
+                exitos = 0;
+                iteracionR++;
             }
+
 
         }
 
@@ -272,24 +262,8 @@ public class Perceptron {
         System.out.println("Se realizaron " + (iteracionT - 1) + " iteraciones totales");
         System.out.println(n);
 
-        System.out.println("0 - 0 - 0 - 0 => " + n.verResultadoDe(0, 0, 0, 0));
-        System.out.println("0 - 0 - 0 - 1 => " + n.verResultadoDe(0, 0, 0, 1));
-        System.out.println("0 - 0 - 1 - 0 => " + n.verResultadoDe(0, 0, 1, 0));
-        System.out.println("0 - 0 - 1 - 1 => " + n.verResultadoDe(0, 0, 1, 1));
-        System.out.println("0 - 1 - 0 - 0 => " + n.verResultadoDe(0, 1, 0, 0));
-        System.out.println("0 - 1 - 0 - 1 => " + n.verResultadoDe(0, 1, 0, 1));
-        System.out.println("0 - 1 - 1 - 0 => " + n.verResultadoDe(0, 1, 1, 0));
-        System.out.println("0 - 1 - 1 - 1 => " + n.verResultadoDe(0, 1, 1, 1));
-        System.out.println("1 - 0 - 0 - 0 => " + n.verResultadoDe(1, 0, 0, 0));
-        System.out.println("1 - 0 - 0 - 1 => " + n.verResultadoDe(1, 0, 0, 1));
-        System.out.println("1 - 0 - 1 - 0 => " + n.verResultadoDe(1, 0, 1, 0));
-        System.out.println("1 - 0 - 1 - 1 => " + n.verResultadoDe(1, 0, 1, 1));
-        System.out.println("1 - 1 - 0 - 0 => " + n.verResultadoDe(1, 1, 0, 0));
-        System.out.println("1 - 1 - 0 - 1 => " + n.verResultadoDe(1, 1, 0, 1));
-        System.out.println("1 - 1 - 1 - 0 => " + n.verResultadoDe(1, 1, 1, 0));
-        System.out.println("1 - 1 - 1 - 1 => " + n.verResultadoDe(1, 1, 1, 1));
-
         return retorno;
+        
     }
 
     public double verResultadoDe(double x1, double x2) {
@@ -297,9 +271,16 @@ public class Perceptron {
         return this.n.verResultadoDe(x1, x2);
         
     }
+    
     public double verResultadoDe(double x1, double x2, double x3, double x4) {
         
         return this.n.verResultadoDe(x1, x2, x3, x4);
+        
+    }
+    
+    public double verResultadoDePib(double x1, double x2, double x3, double x4) {
+        
+        return this.n.verResultadoDePib(x1, x2, x3, x4);
         
     }
 

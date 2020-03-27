@@ -70,6 +70,13 @@ public class PerceptronBean implements Serializable {
 
     }
 
+    public void calcularPib() {
+
+        this.salida = this.perceptron.verResultadoDePib(this.x1, this.x2, this.x3, this.x4);
+
+
+    }
+
     public void generarWi() {
 
         this.simple = numDeEntradas == 2;
