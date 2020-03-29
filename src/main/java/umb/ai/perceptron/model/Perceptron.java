@@ -230,12 +230,17 @@ public class Perceptron {
                 retorno = "pib_entrenado.xhtml";
                 break;
             }
-
+                /*  System.out.println("x1 "+x1[indice]+"x2 "+x2[indice]+"EXITOS "+exitos);*/
             yR = n.funcionDePropagacion(x1[indice], x2[indice], x3[indice], x4[indice]);
-            
+           yR= yR/1000000000;
+           
+           yR=yR/1000;
             double comparadorInferior = yR - 50000;
             double comparadorSuperior = yR + 50000;
-
+             
+            /*System.out.println(yf[indice] );
+            
+            System.out.println(yR);*/
 
             if (yf[indice] >= comparadorInferior && yf[indice] <= comparadorSuperior) {
                 exitos++;

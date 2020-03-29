@@ -55,7 +55,7 @@ public class PerceptronBean implements Serializable {
         String sigPag = null;
 
 //        sigPag = this.perceptron.entrenarPib(w1, w2, w3, w4, theta, aprendizaje, tabla);
-        sigPag = this.perceptron.entrenarPib(0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
+        sigPag = this.perceptron.entrenarPib(0.1, 0.2, 0.2, 0.1, 0.2, 0.3);
 
         return sigPag;
     }
@@ -73,6 +73,8 @@ public class PerceptronBean implements Serializable {
     public void calcularPib() {
 
         this.salida = this.perceptron.verResultadoDePib(this.x1, this.x2, this.x3, this.x4);
+           
+      
 
 
     }

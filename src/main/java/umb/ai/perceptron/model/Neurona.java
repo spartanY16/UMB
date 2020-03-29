@@ -30,7 +30,7 @@ public class Neurona {
 
     public double funcionDePropagacion(double x1, double x2, double x3, double x4) {
         double wx;
-        wx = (x1 * w1) + (x2 * w2) + (x3 * w3) + (x4 * w4) - eR; // Función propagación
+        wx = (x1 * w1) + (x2 * w2) + (x3 * w3) - (x4 * w4) - eR; // Función propagación
         yR = wx;// Math.tanh(wx); // Salida
         return yR;
 
@@ -60,6 +60,8 @@ public class Neurona {
     
     public double verResultadoDePib(double x1, double x2, double x3, double x4) {
         double res = funcionDePropagacion(x1, x2, x3, x4);
+        res=res/1000000000;
+        res=res/1000;
         
         return res;
 
