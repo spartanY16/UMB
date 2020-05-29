@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -24,11 +26,11 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "Pregunta")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Pregunta.findAll", query = "SELECT p FROM Pregunta p")
     , @NamedQuery(name = "Pregunta.findById", query = "SELECT p FROM Pregunta p WHERE p.id = :id")
-    , @NamedQuery(name = "Pregunta.findByEncabezado", query = "SELECT p FROM Pregunta p WHERE p.encabezado = :encabezado")
-    , @NamedQuery(name = "Pregunta.findByCompetenciaId", query = "SELECT p FROM Pregunta p WHERE p.competenciaId = :competenciaId")})
+    , @NamedQuery(name = "Pregunta.findByEncabezado", query = "SELECT p FROM Pregunta p WHERE p.encabezado = :encabezado")})
 public class Pregunta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,8 +42,6 @@ public class Pregunta implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "encabezado")
     private String encabezado;
-    @Column(name = "competencia_id")
-    private Integer competenciaId;
     @OneToMany(mappedBy = "preguntaId")
     private Collection<OpcionRespuesta> opcionRespuestaCollection;
     @OneToMany(mappedBy = "preguntaId")
@@ -72,14 +72,7 @@ public class Pregunta implements Serializable {
         this.encabezado = encabezado;
     }
 
-    public Integer getCompetenciaId() {
-        return competenciaId;
-    }
-
-    public void setCompetenciaId(Integer competenciaId) {
-        this.competenciaId = competenciaId;
-    }
-
+    @XmlTransient
     public Collection<OpcionRespuesta> getOpcionRespuestaCollection() {
         return opcionRespuestaCollection;
     }
@@ -88,6 +81,7 @@ public class Pregunta implements Serializable {
         this.opcionRespuestaCollection = opcionRespuestaCollection;
     }
 
+    @XmlTransient
     public Collection<Evaluacion> getEvaluacionCollection() {
         return evaluacionCollection;
     }
@@ -96,6 +90,7 @@ public class Pregunta implements Serializable {
         this.evaluacionCollection = evaluacionCollection;
     }
 
+    @XmlTransient
     public Collection<CompetenciaPregunta> getCompetenciaPreguntaCollection() {
         return competenciaPreguntaCollection;
     }
@@ -126,7 +121,7 @@ public class Pregunta implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.Pregunta[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.Pregunta[ id=" + id + " ]";
     }
     
 }

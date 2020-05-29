@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>   
+
+    <h:body>
+        <h:form id="form">    
+
+            <center>
+                <p:panel id="basic" header="Registro Aspirantes" style="margin-bottom:20px;max-width:300px">
+                    <h3>Identificación</h3>
+                    <p:inputNumber value="#{RegistroAspirantesController.identificacion}"  />
+
+                    <h3>Nombre</h3>
+                    <p:inputText value="#{RegistroAspirantesController.nombre}"  />
+
+                    <h3>Area de Experiencia</h3>
+                    <p:selectOneMenu value="#{RegistroAspirantesController.areaExperiencia}" style="width:200px">
+                        <f:selectItem itemLabel="" itemValue="" />
+                        <f:selectItem itemLabel="Analista" itemValue="1" />
+                        <f:selectItem itemLabel="Tester" itemValue="2" />
+                        <f:selectItem itemLabel="Programador" itemValue="3" />
+                        <f:selectItem itemLabel="Diseñador" itemValue="4" />
+                        <f:selectItem itemLabel="Administrador de Proyecto" itemValue="5" />
+                        <f:facet name="footer">
+                            <p:separator />
+                            <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                        </f:facet>
+                    </p:selectOneMenu>
+
+                    <h3>Area de Aspiración</h3>
+                    <p:selectOneMenu value="#{RegistroAspirantesController.areaAspiracion}" style="width:200px">
+                        <f:selectItem itemLabel="" itemValue="" />
+                        <f:selectItem itemLabel="Analista" itemValue="1" />
+                        <f:selectItem itemLabel="Tester" itemValue="2" />
+                        <f:selectItem itemLabel="Programador" itemValue="3" />
+                        <f:selectItem itemLabel="Diseñador" itemValue="4" />
+                        <f:selectItem itemLabel="Administrador de Proyecto" itemValue="5" />
+                        <f:facet name="footer">
+                            <p:separator />
+                            <h:outputText value="3 consoles" style="font-weight:bold;"/>
+                        </f:facet>
+                    </p:selectOneMenu>
+
+                    <br/>
+                    <br/>
+                    <p:commandButton value="Registrar Aspirante" action="#{RegistroAspirantesController.registrarAspirante()}" update=":form" />
+
+                </p:panel>
+
+            </center>
+        </h:form>
+    </h:body>
+</html>

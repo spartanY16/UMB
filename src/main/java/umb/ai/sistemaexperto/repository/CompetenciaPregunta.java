@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,6 +18,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -25,6 +27,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "Competencia_Pregunta")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CompetenciaPregunta.findAll", query = "SELECT c FROM CompetenciaPregunta c")
     , @NamedQuery(name = "CompetenciaPregunta.findById", query = "SELECT c FROM CompetenciaPregunta c WHERE c.id = :id")})
@@ -60,6 +63,7 @@ public class CompetenciaPregunta implements Serializable {
         this.id = id;
     }
 
+    @XmlTransient
     public Collection<CompetenciaPregunta> getCompetenciaPreguntaCollection() {
         return competenciaPreguntaCollection;
     }
@@ -106,7 +110,7 @@ public class CompetenciaPregunta implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.CompetenciaPregunta[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.CompetenciaPregunta[ id=" + id + " ]";
     }
     
 }

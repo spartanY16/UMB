@@ -1,4 +1,7 @@
-umb\ai\perceptron\PerceptronBean.class
-umb\ai\perceptron\model\Perceptron.class
-umb\ai\pib\ProductoInternoBruto.class
+umb\ai\sistemaexperto\model\MotorInferencia.class
 umb\ai\perceptron\model\Neurona.class
+umb\ai\sistemaexperto\controller\SistemaExpertoController.class
+umb\ai\perceptron\PerceptronBean.class
+umb\ai\pib\ProductoInternoBruto.class
+umb\ai\sistemaexperto\model\Nodo.class
+umb\ai\perceptron\model\Perceptron.class

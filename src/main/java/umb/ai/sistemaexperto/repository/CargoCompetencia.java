@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -16,19 +16,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author davin
  */
 @Entity
-@Table(name = "Resultado")
+@Table(name = "Cargo_Competencia")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Resultado.findAll", query = "SELECT r FROM Resultado r")
-    , @NamedQuery(name = "Resultado.findById", query = "SELECT r FROM Resultado r WHERE r.id = :id")
-    , @NamedQuery(name = "Resultado.findByRecomendacion", query = "SELECT r FROM Resultado r WHERE r.recomendacion = :recomendacion")})
-public class Resultado implements Serializable {
+    @NamedQuery(name = "CargoCompetencia.findAll", query = "SELECT c FROM CargoCompetencia c")
+    , @NamedQuery(name = "CargoCompetencia.findById", query = "SELECT c FROM CargoCompetencia c WHERE c.id = :id")})
+public class CargoCompetencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,17 +36,17 @@ public class Resultado implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Size(max = 2147483647)
-    @Column(name = "recomendacion")
-    private String recomendacion;
-    @JoinColumn(name = "evaluacion_id", referencedColumnName = "Id")
+    @JoinColumn(name = "cargo_id", referencedColumnName = "Id")
     @ManyToOne
-    private Evaluacion evaluacionId;
+    private Cargo cargoId;
+    @JoinColumn(name = "competencia_id", referencedColumnName = "Id")
+    @ManyToOne
+    private Competencia competenciaId;
 
-    public Resultado() {
+    public CargoCompetencia() {
     }
 
-    public Resultado(Integer id) {
+    public CargoCompetencia(Integer id) {
         this.id = id;
     }
 
@@ -58,20 +58,20 @@ public class Resultado implements Serializable {
         this.id = id;
     }
 
-    public String getRecomendacion() {
-        return recomendacion;
+    public Cargo getCargoId() {
+        return cargoId;
     }
 
-    public void setRecomendacion(String recomendacion) {
-        this.recomendacion = recomendacion;
+    public void setCargoId(Cargo cargoId) {
+        this.cargoId = cargoId;
     }
 
-    public Evaluacion getEvaluacionId() {
-        return evaluacionId;
+    public Competencia getCompetenciaId() {
+        return competenciaId;
     }
 
-    public void setEvaluacionId(Evaluacion evaluacionId) {
-        this.evaluacionId = evaluacionId;
+    public void setCompetenciaId(Competencia competenciaId) {
+        this.competenciaId = competenciaId;
     }
 
     @Override
@@ -84,10 +84,10 @@ public class Resultado implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Resultado)) {
+        if (!(object instanceof CargoCompetencia)) {
             return false;
         }
-        Resultado other = (Resultado) object;
+        CargoCompetencia other = (CargoCompetencia) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,7 +96,7 @@ public class Resultado implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.Resultado[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.CargoCompetencia[ id=" + id + " ]";
     }
     
 }

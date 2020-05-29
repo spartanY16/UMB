@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,22 +15,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author davin
  */
 @Entity
-@Table(name = "Opcion_Respuesta")
+@Table(name = "Evaluacion")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "OpcionRespuesta.findAll", query = "SELECT o FROM OpcionRespuesta o")
-    , @NamedQuery(name = "OpcionRespuesta.findById", query = "SELECT o FROM OpcionRespuesta o WHERE o.id = :id")
-    , @NamedQuery(name = "OpcionRespuesta.findByNombre", query = "SELECT o FROM OpcionRespuesta o WHERE o.nombre = :nombre")
-    , @NamedQuery(name = "OpcionRespuesta.findByPeso", query = "SELECT o FROM OpcionRespuesta o WHERE o.peso = :peso")})
-public class OpcionRespuesta implements Serializable {
+    @NamedQuery(name = "Evaluacion.findAll", query = "SELECT e FROM Evaluacion e")
+    , @NamedQuery(name = "Evaluacion.findById", query = "SELECT e FROM Evaluacion e WHERE e.id = :id")})
+public class Evaluacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,19 +39,19 @@ public class OpcionRespuesta implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @Size(max = 2147483647)
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "peso")
-    private Integer peso;
+    @OneToMany(mappedBy = "evaluacionId")
+    private Collection<Resultado> resultadoCollection;
+    @JoinColumn(name = "aspirante_id", referencedColumnName = "Id")
+    @ManyToOne
+    private Aspirante aspiranteId;
     @JoinColumn(name = "pregunta_id", referencedColumnName = "Id")
     @ManyToOne
     private Pregunta preguntaId;
 
-    public OpcionRespuesta() {
+    public Evaluacion() {
     }
 
-    public OpcionRespuesta(Integer id) {
+    public Evaluacion(Integer id) {
         this.id = id;
     }
 
@@ -61,20 +63,21 @@ public class OpcionRespuesta implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    @XmlTransient
+    public Collection<Resultado> getResultadoCollection() {
+        return resultadoCollection;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setResultadoCollection(Collection<Resultado> resultadoCollection) {
+        this.resultadoCollection = resultadoCollection;
     }
 
-    public Integer getPeso() {
-        return peso;
+    public Aspirante getAspiranteId() {
+        return aspiranteId;
     }
 
-    public void setPeso(Integer peso) {
-        this.peso = peso;
+    public void setAspiranteId(Aspirante aspiranteId) {
+        this.aspiranteId = aspiranteId;
     }
 
     public Pregunta getPreguntaId() {
@@ -95,10 +98,10 @@ public class OpcionRespuesta implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpcionRespuesta)) {
+        if (!(object instanceof Evaluacion)) {
             return false;
         }
-        OpcionRespuesta other = (OpcionRespuesta) object;
+        Evaluacion other = (Evaluacion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -107,7 +110,7 @@ public class OpcionRespuesta implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.OpcionRespuesta[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.Evaluacion[ id=" + id + " ]";
     }
     
 }

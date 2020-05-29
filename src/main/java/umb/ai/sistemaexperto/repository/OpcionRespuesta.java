@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,20 +14,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author davin
  */
 @Entity
-@Table(name = "Evaluacion")
+@Table(name = "Opcion_Respuesta")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Evaluacion.findAll", query = "SELECT e FROM Evaluacion e")
-    , @NamedQuery(name = "Evaluacion.findById", query = "SELECT e FROM Evaluacion e WHERE e.id = :id")})
-public class Evaluacion implements Serializable {
+    @NamedQuery(name = "OpcionRespuesta.findAll", query = "SELECT o FROM OpcionRespuesta o")
+    , @NamedQuery(name = "OpcionRespuesta.findById", query = "SELECT o FROM OpcionRespuesta o WHERE o.id = :id")
+    , @NamedQuery(name = "OpcionRespuesta.findByNombre", query = "SELECT o FROM OpcionRespuesta o WHERE o.nombre = :nombre")
+    , @NamedQuery(name = "OpcionRespuesta.findByPeso", query = "SELECT o FROM OpcionRespuesta o WHERE o.peso = :peso")})
+public class OpcionRespuesta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,19 +39,19 @@ public class Evaluacion implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Integer id;
-    @OneToMany(mappedBy = "evaluacionId")
-    private Collection<Resultado> resultadoCollection;
-    @JoinColumn(name = "aspirante_id", referencedColumnName = "Id")
-    @ManyToOne
-    private Aspirante aspiranteId;
+    @Size(max = 2147483647)
+    @Column(name = "nombre")
+    private String nombre;
+    @Column(name = "peso")
+    private Integer peso;
     @JoinColumn(name = "pregunta_id", referencedColumnName = "Id")
     @ManyToOne
     private Pregunta preguntaId;
 
-    public Evaluacion() {
+    public OpcionRespuesta() {
     }
 
-    public Evaluacion(Integer id) {
+    public OpcionRespuesta(Integer id) {
         this.id = id;
     }
 
@@ -60,20 +63,20 @@ public class Evaluacion implements Serializable {
         this.id = id;
     }
 
-    public Collection<Resultado> getResultadoCollection() {
-        return resultadoCollection;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setResultadoCollection(Collection<Resultado> resultadoCollection) {
-        this.resultadoCollection = resultadoCollection;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Aspirante getAspiranteId() {
-        return aspiranteId;
+    public Integer getPeso() {
+        return peso;
     }
 
-    public void setAspiranteId(Aspirante aspiranteId) {
-        this.aspiranteId = aspiranteId;
+    public void setPeso(Integer peso) {
+        this.peso = peso;
     }
 
     public Pregunta getPreguntaId() {
@@ -94,10 +97,10 @@ public class Evaluacion implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Evaluacion)) {
+        if (!(object instanceof OpcionRespuesta)) {
             return false;
         }
-        Evaluacion other = (Evaluacion) object;
+        OpcionRespuesta other = (OpcionRespuesta) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -106,7 +109,7 @@ public class Evaluacion implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.Evaluacion[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.OpcionRespuesta[ id=" + id + " ]";
     }
     
 }

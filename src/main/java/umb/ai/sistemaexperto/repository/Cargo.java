@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package umb.ai.sistemaexperto.entity;
+package umb.ai.sistemaexperto.repository;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,18 +17,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author davin
  */
 @Entity
-@Table(name = "Competencia")
+@Table(name = "Cargo")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Competencia.findAll", query = "SELECT c FROM Competencia c")
-    , @NamedQuery(name = "Competencia.findById", query = "SELECT c FROM Competencia c WHERE c.id = :id")
-    , @NamedQuery(name = "Competencia.findByNombre", query = "SELECT c FROM Competencia c WHERE c.nombre = :nombre")})
-public class Competencia implements Serializable {
+    @NamedQuery(name = "Cargo.findAll", query = "SELECT c FROM Cargo c")
+    , @NamedQuery(name = "Cargo.findById", query = "SELECT c FROM Cargo c WHERE c.id = :id")
+    , @NamedQuery(name = "Cargo.findByNombre", query = "SELECT c FROM Cargo c WHERE c.nombre = :nombre")})
+public class Cargo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,13 +42,13 @@ public class Competencia implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(mappedBy = "competenciaId")
+    @OneToMany(mappedBy = "cargoId")
     private Collection<CargoCompetencia> cargoCompetenciaCollection;
 
-    public Competencia() {
+    public Cargo() {
     }
 
-    public Competencia(Integer id) {
+    public Cargo(Integer id) {
         this.id = id;
     }
 
@@ -65,6 +68,7 @@ public class Competencia implements Serializable {
         this.nombre = nombre;
     }
 
+    @XmlTransient
     public Collection<CargoCompetencia> getCargoCompetenciaCollection() {
         return cargoCompetenciaCollection;
     }
@@ -83,10 +87,10 @@ public class Competencia implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Competencia)) {
+        if (!(object instanceof Cargo)) {
             return false;
         }
-        Competencia other = (Competencia) object;
+        Cargo other = (Cargo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -95,7 +99,7 @@ public class Competencia implements Serializable {
 
     @Override
     public String toString() {
-        return "umb.ai.sistemaexperto.entity.Competencia[ id=" + id + " ]";
+        return "umb.ai.sistemaexperto.repository.Cargo[ id=" + id + " ]";
     }
     
 }
